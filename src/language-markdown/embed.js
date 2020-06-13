@@ -14,6 +14,16 @@ const { getFencedCodeBlockValue } = require("./utils");
 function embed(path, print, textToDoc, options) {
   const node = path.getValue();
 
+  if (
+    node.type === "html" &&
+    node.value &&
+    !/^<!--[\S\s]*-->$/.test(node.value) &&
+    path.getParentNode() &&
+    path.getParentNode().type === "root"
+  ) {
+    return textToDoc(node.value, { parser: getParserName("html", options) });
+  }
+
   if (node.type === "code" && node.lang !== null) {
     // only look for the first string so as to support [markdown-preview-enhanced](https://shd101wyy.github.io/markdown-preview-enhanced/#/code-chunk)
     const langMatch = node.lang.match(/^[\w-]+/);
