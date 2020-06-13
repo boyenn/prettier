@@ -14,7 +14,13 @@ const { getFencedCodeBlockValue } = require("./utils");
 function embed(path, print, textToDoc, options) {
   const node = path.getValue();
 
-  if (node.type === "html" && node.value &&  !/^<!--[\S\s]*-->$/.test(node.value)) {
+  if (
+    node.type === "html" &&
+    node.value &&
+    !/^<!--[\S\s]*-->$/.test(node.value) &&
+    path.getParentNode() &&
+    path.getParentNode().type === "paragraph"
+  ) {
     return textToDoc(node.value, { parser: getParserName("html", options) });
   }
 
