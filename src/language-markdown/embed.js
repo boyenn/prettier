@@ -19,7 +19,7 @@ function embed(path, print, textToDoc, options) {
     node.value &&
     !/^<!--[\S\s]*-->$/.test(node.value) &&
     path.getParentNode() &&
-    path.getParentNode().type === "paragraph"
+    path.getParentNode().type === "root"
   ) {
     return textToDoc(node.value, { parser: getParserName("html", options) });
   }

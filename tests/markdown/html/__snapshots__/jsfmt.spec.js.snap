@@ -62,8 +62,11 @@ proseWrap: "always"
 
 =====================================output=====================================
 <!--lint disable no-html-->
-<p align="center"><img src="logo/vertical.png" alt="labelify" height="150px"></p>
+<p align="center">
+  <img src="logo/vertical.png" alt="labelify" height="150px" />
+</p>
 <!--lint enable no-html-->
+
 
 ================================================================================
 `;
@@ -193,10 +196,26 @@ printWidth: 80
 proseWrap: "always"
                                                                                 | printWidth
 =====================================input======================================
-<!-- hello world -->
+I like writing html inside my markdown files for various reasons:
+
+<ul>
+<li>sometimes it's easier</li>
+<li>sometimes I need to put in a <span style="color:red">different color</span> for some reason</li>
+<li>sometimes there isn't a good reason</li>
+</ul>
 
 =====================================output=====================================
-<!-- hello world -->
+I like writing html inside my markdown files for various reasons:
+
+<ul>
+  <li>sometimes it's easier</li>
+  <li>
+    sometimes I need to put in a
+    <span style="color:red">different color</span> for some reason
+  </li>
+  <li>sometimes there isn't a good reason</li>
+</ul>
+
 
 ================================================================================
 `;
